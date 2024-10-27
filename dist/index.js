@@ -2,18 +2,14 @@
 const displayUserProfile = (user) => {
     console.log(`Name: ${user.name}, Email: ${user.email}`);
 };
-displayUserProfile({ name: "sukhvir", email: "sukhvir@gmail.com" });
-// 2. partial 
-// interface User {
-//     id: string;
-//     name: string;
-//     age: string;
-//     email: string;
-//     password: string;
-// };
-// type UpdateProps = Pick<User, 'name' | 'age' | 'email'>
-// type UpdatePropsOptional = Partial<UpdateProps> // parital 
-// function updateUser(updatedProps: UpdatePropsOptional) {
-//     // hit the database tp update the user
-// }
-// updateUser({})
+;
+function updateUser(updatedProps) {
+    // hit the database tp update the user
+}
+const arsh = {
+    name: "arsh",
+    age: 20
+};
+// arsh.age = 21; not possible 
+arsh.name = "arshdeep"; // possible 
+console.log(arsh);

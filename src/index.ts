@@ -47,35 +47,66 @@ arsh.name = "arshdeep" // possible
 
 
 // old syntacx 
-type user ={
-    name:string,
-    age:number
-}
-type users = {
-    [key:string]:user
-}
+// type user ={
+//     name:string,
+//     age:number
+// }
+// type users = {
+//     [key:string]:user
+// }
 
-const class12  : users ={
-    "rollno1":{
-        name:'rahul',
-        age:19
-    },
-    "rollno2":{
-        name:"mehul",
-        age:20
-    }
-}
+// const class12  : users ={
+//     "rollno1":{
+//         name:'rahul',
+//         age:19
+//     },
+//     "rollno2":{
+//         name:"mehul",
+//         age:20
+//     }
+// }
 // new syntax 
 
-type user2 = Record<string,user>;
+// type user2 = Record<string,user>; // record only exist in typescript
 
-const class11 :user2={
-    "rollno1":{
-        name:'rahul',
-        age:19
-    },
-    "rollno2":{
-        name:"mehul",
-        age:20
-    }
-}
+// const class11 :user2={
+//     "rollno1":{
+//         name:'rahul',
+//         age:19
+//     },
+//     "rollno2":{
+//         name:"mehul",
+//         age:20
+//     }
+// }
+// map
+
+
+// zod in typescript 
+import { z } from 'zod';
+import express from "express";
+
+const app = express();
+
+// Define the schema for profile update
+const userProfileSchema = z.object({
+  name: z.string().min(1, { message: "Name cannot be empty" }),
+  email: z.string().email({ message: "Invalid email format" }),
+  age: z.number().min(18, { message: "You must be at least 18 years old" }).optional(),
+});
+
+app.put("/user", (req, res) => {
+  const { success } = userProfileSchema.safeParse(req.body);
+  const updateBody = req.body; // how to assign a type to updateBody?
+
+  if (!success) {
+    res.status(411).json({});
+    return
+  }
+  // update database here
+  res.json({
+    message: "User updated"
+  })
+});
+
+app.listen(3000);

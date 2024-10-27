@@ -41,4 +41,41 @@ const arsh:User3={
 }
 // arsh.age = 21; not possible 
 arsh.name = "arshdeep" // possible 
-console.log(arsh);
+// console.log(arsh);
+
+// record and maps
+
+
+// old syntacx 
+type user ={
+    name:string,
+    age:number
+}
+type users = {
+    [key:string]:user
+}
+
+const class12  : users ={
+    "rollno1":{
+        name:'rahul',
+        age:19
+    },
+    "rollno2":{
+        name:"mehul",
+        age:20
+    }
+}
+// new syntax 
+
+type user2 = Record<string,user>;
+
+const class11 :user2={
+    "rollno1":{
+        name:'rahul',
+        age:19
+    },
+    "rollno2":{
+        name:"mehul",
+        age:20
+    }
+}

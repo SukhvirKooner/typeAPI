@@ -1,5 +1,19 @@
 "use strict";
-function sumofage(user1, user2) {
-    return user1.age + user2.age;
-}
-console.log(sumofage({ name: "sukhvir", age: 10 }, { name: "arsh", age: 20 }));
+const displayUserProfile = (user) => {
+    console.log(`Name: ${user.name}, Email: ${user.email}`);
+};
+displayUserProfile({ name: "sukhvir", email: "sukhvir@gmail.com" });
+// 2. partial 
+// interface User {
+//     id: string;
+//     name: string;
+//     age: string;
+//     email: string;
+//     password: string;
+// };
+// type UpdateProps = Pick<User, 'name' | 'age' | 'email'>
+// type UpdatePropsOptional = Partial<UpdateProps> // parital 
+// function updateUser(updatedProps: UpdatePropsOptional) {
+//     // hit the database tp update the user
+// }
+// updateUser({})

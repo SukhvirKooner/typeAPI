@@ -13,6 +13,7 @@
       const displayUserProfile = (user: UserProfile) => {
         console.log(`Name: ${user.name}, Email: ${user.email}`);
       };
+      displayUserProfile({name:"sukhvir",email:"sukhvir@gmail.com"})
       
 // 2. partial 
 // interface User {
